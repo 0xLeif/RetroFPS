@@ -18,45 +18,39 @@ public struct Renderer {
 
 public extension Renderer {
     mutating func draw(_ world: World) {
-        let scale = bitmap.height.to_d / world.size.y
-        
-        // Draw Map
-        for y in 0 ..< world.map.height {
-            for x in 0 ..< world.map.width where world.map[x, y].isWall {
-                let rect = Rect(min: Vector(x: x.to_d, y: y.to_d) * scale,
-                                max: Vector(x: (x + 1).to_d, y: (y + 1).to_d) * scale)
-                bitmap.fill(frame: rect, color: .white)
-            }
-        }
-        
-        // Draw Player
-        var frame = world.player.rect
-        frame.max *= scale
-        frame.min *= scale
-        bitmap.fill(frame: frame, color: .blue)
-        
-        // Draw View Plane
         let focalLength = 1.0
-        let viewWidth = 1.0
+        let viewWidth = bitmap.width.to_d / bitmap.height.to_d
         let viewPlane = world.player.direction.orthogonal * viewWidth
         let viewCenter = world.player.position + world.player.direction * focalLength
         let viewStart = viewCenter - viewPlane / 2
-        let viewEnd = viewStart + viewPlane
-        bitmap.drawLine(from: viewStart * scale, to: viewEnd * scale, color: .red)
         
         // Cast Rays
-        let columns = 10
+        let columns = bitmap.width
         let step = viewPlane / columns.to_d
         var columnPosition = viewStart
-        for _ in 0 ..< columns {
+        for x in 0 ..< columns {
             let rayDirection = columnPosition - world.player.position
             let viewPlaneDistance = rayDirection.length
             let ray = Ray(origin: world.player.position,
                           direction: rayDirection / viewPlaneDistance)
             let end = world.map.hitTest(ray)
-            bitmap.drawLine(from: ray.origin * scale,
-                            to: end * scale,
-                            color: .green)
+            let wallDistance = (end - ray.origin).length
+            let wallHeight = 1.0
+            let distanceRatio = viewPlaneDistance / focalLength
+            let perpendicular = wallDistance / distanceRatio
+            let height = wallHeight * focalLength / perpendicular * bitmap.height.to_d
+            
+            let wallColor: Color
+            if end.x.rounded(.down) == end.x {
+                wallColor = .white
+            } else {
+                wallColor = .gray
+            }
+            
+            bitmap.drawLine(from: Vector(x: x.to_d, y: (bitmap.height.to_d - height) / 2),
+                            to: Vector(x: x.to_d, y: (bitmap.height.to_d + height) / 2),
+                            color: wallColor)
+            
             columnPosition += step
         }
     }

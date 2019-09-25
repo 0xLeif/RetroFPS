@@ -31,6 +31,7 @@
 		290B7E11233C225400E5ADD2 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E10233C225400E5ADD2 /* Input.swift */; };
 		290B7E13233C246200E5ADD2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E12233C246200E5ADD2 /* Helpers.swift */; };
 		290B7E15233C2A5900E5ADD2 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E14233C2A5900E5ADD2 /* Ray.swift */; };
+		290B7E17233C2E6300E5ADD2 /* Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E16233C2E6300E5ADD2 /* Rotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		290B7E10233C225400E5ADD2 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		290B7E12233C246200E5ADD2 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		290B7E14233C2A5900E5ADD2 /* Ray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
+		290B7E16233C2E6300E5ADD2 /* Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				290B7DFC233C17DD00E5ADD2 /* Player.swift */,
 				290B7DFE233C17E200E5ADD2 /* Renderer.swift */,
 				290B7E00233C17E800E5ADD2 /* Vector.swift */,
+				290B7E16233C2E6300E5ADD2 /* Rotation.swift */,
 				290B7E04233C1AF500E5ADD2 /* World.swift */,
 				290B7E06233C1BD000E5ADD2 /* Rect.swift */,
 				290B7E08233C1E3200E5ADD2 /* Tile.swift */,
@@ -294,6 +297,7 @@
 				290B7E09233C1E3200E5ADD2 /* Tile.swift in Sources */,
 				290B7DF9233C17CB00E5ADD2 /* Bitmap.swift in Sources */,
 				290B7E01233C17E800E5ADD2 /* Vector.swift in Sources */,
+				290B7E17233C2E6300E5ADD2 /* Rotation.swift in Sources */,
 				290B7E13233C246200E5ADD2 /* Helpers.swift in Sources */,
 				290B7DFD233C17DD00E5ADD2 /* Player.swift in Sources */,
 				290B7E0B233C1E4B00E5ADD2 /* Tilemap.swift in Sources */,

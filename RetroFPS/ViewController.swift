@@ -65,15 +65,19 @@ class ViewController: UIViewController {
     
     @objc func update(_ displayLink: CADisplayLink) {
         let delta = min(maximumDelta, displayLink.timestamp - lastFrameTime)
-        let input = Input(velocity: inputVector)
+        let inputVector = self.inputVector
+        let rotation = inputVector.x * world.player.turningSpeed * worldTimeStep
+        let input = Input(speed: -inputVector.y,
+                          rotation: Rotation(sine: sin(rotation), cosine: cos(rotation)))
         let worldSteps = (delta / worldTimeStep).rounded(.up)
         for _ in 0 ..< worldSteps.to_i {
             world.update(delta: delta / worldSteps, input: input)
         }
         lastFrameTime = displayLink.timestamp
         
-        let size = Int(min(imageView.bounds.width, imageView.bounds.height))
-        var renderer = Renderer(width: size, height: size)
+        let width = Int(imageView.bounds.width)
+        let height = Int(imageView.bounds.height)
+        var renderer = Renderer(width: width, height: height)
         renderer.draw(world)
         
         imageView.image = UIImage(bitmap: renderer.bitmap)
