@@ -9,14 +9,43 @@
 import UIKit
 import Engine
 
+private func loadMap() -> Tilemap {
+    let jsonURL = Bundle.main.url(forResource: "Map", withExtension: "json")!
+    let jsonData = try! Data(contentsOf: jsonURL)
+    return try! JSONDecoder().decode(Tilemap.self, from: jsonData)
+}
+
+private let joystickRadius: Double = 40
+private let maximumDelta: Double = 1 / 20
+private let worldTimeStep: Double = 1 / 120
+
 class ViewController: UIViewController {
     private let imageView = UIImageView()
-    private var world = World()
+    private let panGesture = UIPanGestureRecognizer()
+    private var world = World(map: loadMap())
     private var lastFrameTime = CACurrentMediaTime()
+    
+    private var inputVector: Vector {
+        switch panGesture.state {
+        case .began, .changed:
+            let translation = panGesture.translation(in: view)
+            var vector = Vector(x: Double(translation.x), y: Double(translation.y))
+            vector /= max(joystickRadius, vector.length)
+            panGesture.setTranslation(CGPoint(
+                x: vector.x * joystickRadius,
+                y: vector.y * joystickRadius
+            ), in: view)
+            return vector
+        default:
+            return Vector(x: 0, y: 0)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupImageView()
+        
+        view.addGestureRecognizer(panGesture)
         
         let displayLink = CADisplayLink(target: self, selector: #selector(update))
         displayLink.add(to: .main, forMode: .common)
@@ -35,8 +64,12 @@ class ViewController: UIViewController {
     }
     
     @objc func update(_ displayLink: CADisplayLink) {
-        let delta = displayLink.timestamp - lastFrameTime
-        world.update(delta: delta)
+        let delta = min(maximumDelta, displayLink.timestamp - lastFrameTime)
+        let input = Input(velocity: inputVector)
+        let worldSteps = (delta / worldTimeStep).rounded(.up)
+        for _ in 0 ..< worldSteps.to_i {
+            world.update(delta: delta / worldSteps, input: input)
+        }
         lastFrameTime = displayLink.timestamp
         
         let size = Int(min(imageView.bounds.width, imageView.bounds.height))

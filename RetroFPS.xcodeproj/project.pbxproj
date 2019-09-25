@@ -24,6 +24,12 @@
 		290B7E03233C184100E5ADD2 /* UIImage+Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E02233C184100E5ADD2 /* UIImage+Bitmap.swift */; };
 		290B7E05233C1AF500E5ADD2 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E04233C1AF500E5ADD2 /* World.swift */; };
 		290B7E07233C1BD000E5ADD2 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E06233C1BD000E5ADD2 /* Rect.swift */; };
+		290B7E09233C1E3200E5ADD2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E08233C1E3200E5ADD2 /* Tile.swift */; };
+		290B7E0B233C1E4B00E5ADD2 /* Tilemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E0A233C1E4B00E5ADD2 /* Tilemap.swift */; };
+		290B7E0D233C1FE800E5ADD2 /* Map.json in Resources */ = {isa = PBXBuildFile; fileRef = 290B7E0C233C1FE800E5ADD2 /* Map.json */; };
+		290B7E0F233C20B600E5ADD2 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E0E233C20B600E5ADD2 /* Thing.swift */; };
+		290B7E11233C225400E5ADD2 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E10233C225400E5ADD2 /* Input.swift */; };
+		290B7E13233C246200E5ADD2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E12233C246200E5ADD2 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +76,12 @@
 		290B7E02233C184100E5ADD2 /* UIImage+Bitmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Bitmap.swift"; sourceTree = "<group>"; };
 		290B7E04233C1AF500E5ADD2 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		290B7E06233C1BD000E5ADD2 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
+		290B7E08233C1E3200E5ADD2 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		290B7E0A233C1E4B00E5ADD2 /* Tilemap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tilemap.swift; sourceTree = "<group>"; };
+		290B7E0C233C1FE800E5ADD2 /* Map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Map.json; sourceTree = "<group>"; };
+		290B7E0E233C20B600E5ADD2 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
+		290B7E10233C225400E5ADD2 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		290B7E12233C246200E5ADD2 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +132,7 @@
 				290B7DDD233C179700E5ADD2 /* LaunchScreen.storyboard */,
 				290B7DE0233C179700E5ADD2 /* Info.plist */,
 				290B7E02233C184100E5ADD2 /* UIImage+Bitmap.swift */,
+				290B7E0C233C1FE800E5ADD2 /* Map.json */,
 			);
 			path = RetroFPS;
 			sourceTree = "<group>";
@@ -136,6 +149,11 @@
 				290B7E00233C17E800E5ADD2 /* Vector.swift */,
 				290B7E04233C1AF500E5ADD2 /* World.swift */,
 				290B7E06233C1BD000E5ADD2 /* Rect.swift */,
+				290B7E08233C1E3200E5ADD2 /* Tile.swift */,
+				290B7E0A233C1E4B00E5ADD2 /* Tilemap.swift */,
+				290B7E0E233C20B600E5ADD2 /* Thing.swift */,
+				290B7E10233C225400E5ADD2 /* Input.swift */,
+				290B7E12233C246200E5ADD2 /* Helpers.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -236,6 +254,7 @@
 			files = (
 				290B7DDF233C179700E5ADD2 /* LaunchScreen.storyboard in Resources */,
 				290B7DDC233C179700E5ADD2 /* Assets.xcassets in Resources */,
+				290B7E0D233C1FE800E5ADD2 /* Map.json in Resources */,
 				290B7DDA233C179600E5ADD2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,9 +287,14 @@
 				290B7E07233C1BD000E5ADD2 /* Rect.swift in Sources */,
 				290B7E05233C1AF500E5ADD2 /* World.swift in Sources */,
 				290B7DFF233C17E200E5ADD2 /* Renderer.swift in Sources */,
+				290B7E11233C225400E5ADD2 /* Input.swift in Sources */,
+				290B7E09233C1E3200E5ADD2 /* Tile.swift in Sources */,
 				290B7DF9233C17CB00E5ADD2 /* Bitmap.swift in Sources */,
 				290B7E01233C17E800E5ADD2 /* Vector.swift in Sources */,
+				290B7E13233C246200E5ADD2 /* Helpers.swift in Sources */,
 				290B7DFD233C17DD00E5ADD2 /* Player.swift in Sources */,
+				290B7E0B233C1E4B00E5ADD2 /* Tilemap.swift in Sources */,
+				290B7E0F233C20B600E5ADD2 /* Thing.swift in Sources */,
 				290B7DFB233C17D100E5ADD2 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

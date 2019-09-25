@@ -35,8 +35,8 @@ public extension Bitmap {
     }
     
     mutating func fill(frame: Rect, color: Color) {
-        for y in Int(frame.min.y) ..< Int(frame.max.y) {
-            for x in Int(frame.min.x) ..< Int(frame.max.x) {
+        for y in frame.min.y.to_i ..< frame.max.y.to_i {
+            for x in frame.min.x.to_i ..< frame.max.x.to_i {
                 self[x, y] = color
             }
         }
