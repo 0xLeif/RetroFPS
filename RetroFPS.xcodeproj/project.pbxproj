@@ -30,6 +30,7 @@
 		290B7E0F233C20B600E5ADD2 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E0E233C20B600E5ADD2 /* Thing.swift */; };
 		290B7E11233C225400E5ADD2 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E10233C225400E5ADD2 /* Input.swift */; };
 		290B7E13233C246200E5ADD2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E12233C246200E5ADD2 /* Helpers.swift */; };
+		290B7E15233C2A5900E5ADD2 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B7E14233C2A5900E5ADD2 /* Ray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		290B7E0E233C20B600E5ADD2 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		290B7E10233C225400E5ADD2 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		290B7E12233C246200E5ADD2 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		290B7E14233C2A5900E5ADD2 /* Ray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				290B7E0E233C20B600E5ADD2 /* Thing.swift */,
 				290B7E10233C225400E5ADD2 /* Input.swift */,
 				290B7E12233C246200E5ADD2 /* Helpers.swift */,
+				290B7E14233C2A5900E5ADD2 /* Ray.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				290B7DFD233C17DD00E5ADD2 /* Player.swift in Sources */,
 				290B7E0B233C1E4B00E5ADD2 /* Tilemap.swift in Sources */,
 				290B7E0F233C20B600E5ADD2 /* Thing.swift in Sources */,
+				290B7E15233C2A5900E5ADD2 /* Ray.swift in Sources */,
 				290B7DFB233C17D100E5ADD2 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

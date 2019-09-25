@@ -41,4 +41,24 @@ public extension Bitmap {
             }
         }
     }
+    
+    mutating func drawLine(from: Vector, to: Vector, color: Color) {
+        let difference = to - from
+        let stepCount: Int
+        let step: Vector
+        if abs(difference.x) > abs(difference.y) {
+            stepCount = abs(difference.x).rounded(.up).to_i
+            let sign = difference.x > 0 ? 1.0 : -1.0
+            step = Vector(x: 1, y: difference.y / difference.x) * sign
+        } else {
+            stepCount = abs(difference.y).rounded(.up).to_i
+            let sign = difference.y > 0 ? 1.0 : -1.0
+            step = Vector(x: difference.x / difference.y, y: 1) * sign
+        }
+        var point = from
+        for _ in 0 ..< stepCount {
+            self[point.x.to_i, point.y.to_i] = color
+            point += step
+        }
+    }
 }

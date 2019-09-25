@@ -34,5 +34,10 @@ public extension Renderer {
         frame.max *= scale
         frame.min *= scale
         bitmap.fill(frame: frame, color: .blue)
+        
+        // Draw Line of Sight
+        let ray = Ray(origin: world.player.position, direction: world.player.direction)
+        let end = world.map.hitTest(ray)
+        bitmap.drawLine(from: world.player.position * scale, to: end * scale, color: .green)
     }
 }
