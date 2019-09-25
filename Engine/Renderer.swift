@@ -35,9 +35,29 @@ public extension Renderer {
         frame.min *= scale
         bitmap.fill(frame: frame, color: .blue)
         
-        // Draw Line of Sight
-        let ray = Ray(origin: world.player.position, direction: world.player.direction)
-        let end = world.map.hitTest(ray)
-        bitmap.drawLine(from: world.player.position * scale, to: end * scale, color: .green)
+        // Draw View Plane
+        let focalLength = 1.0
+        let viewWidth = 1.0
+        let viewPlane = world.player.direction.orthogonal * viewWidth
+        let viewCenter = world.player.position + world.player.direction * focalLength
+        let viewStart = viewCenter - viewPlane / 2
+        let viewEnd = viewStart + viewPlane
+        bitmap.drawLine(from: viewStart * scale, to: viewEnd * scale, color: .red)
+        
+        // Cast Rays
+        let columns = 10
+        let step = viewPlane / columns.to_d
+        var columnPosition = viewStart
+        for _ in 0 ..< columns {
+            let rayDirection = columnPosition - world.player.position
+            let viewPlaneDistance = rayDirection.length
+            let ray = Ray(origin: world.player.position,
+                          direction: rayDirection / viewPlaneDistance)
+            let end = world.map.hitTest(ray)
+            bitmap.drawLine(from: ray.origin * scale,
+                            to: end * scale,
+                            color: .green)
+            columnPosition += step
+        }
     }
 }
