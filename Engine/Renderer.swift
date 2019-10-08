@@ -10,9 +10,11 @@ import Foundation
 
 public struct Renderer {
     public private(set) var bitmap: Bitmap
+    private let textures: Textures
     
-    public init(width: Int, height: Int) {
+    public init(width: Int, height: Int, textures: Textures) {
         self.bitmap = Bitmap(width: width, height: height, color: .black)
+        self.textures = textures
     }
 }
 
