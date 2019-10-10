@@ -11,6 +11,11 @@ import Foundation
 public struct Bitmap {
     public private(set) var pixels: [Color]
     public let width: Int
+    
+    public init(width: Int, pixels: [Color]) {
+        self.width = width
+        self.pixels = pixels
+    }
 }
 
 public extension Bitmap {
