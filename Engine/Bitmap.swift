@@ -66,4 +66,15 @@ public extension Bitmap {
             point += step
         }
     }
+    
+    mutating func drawColumn(_ sourceX: Int, of source: Bitmap, at point: Vector, forHeight height: Double) {
+        let start = Int(point.y)
+        let end = Int((point.y + height).rounded(.up))
+        let stepY = Double(source.height) / height
+        for y in max(0, start) ..< min(self.height, end) {
+            let sourceY = (Double(y) - point.y) * stepY
+            let sourceColor = source[sourceX, Int(sourceY)]
+            self[Int(point.x), y] = sourceColor
+        }
+    }
 }

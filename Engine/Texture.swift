@@ -9,7 +9,7 @@
 import Foundation
 
 public enum Texture: String, CaseIterable {
-    case wall
+    case wall, wall2
 }
 
 public struct Textures {

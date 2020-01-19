@@ -15,6 +15,12 @@ private func loadMap() -> Tilemap {
     return try! JSONDecoder().decode(Tilemap.self, from: jsonData)
 }
 
+private func loadTextures() -> Textures {
+    return Textures {
+        Bitmap(image: UIImage(named: $0)!)!
+    }
+}
+
 private let joystickRadius: Double = 40
 private let maximumDelta: Double = 1 / 20
 private let worldTimeStep: Double = 1 / 120
@@ -24,6 +30,7 @@ class ViewController: UIViewController {
     private let panGesture = UIPanGestureRecognizer()
     private var world = World(map: loadMap())
     private var lastFrameTime = CACurrentMediaTime()
+    private var textures = loadTextures()
     
     private var inputVector: Vector {
         switch panGesture.state {
@@ -77,9 +84,7 @@ class ViewController: UIViewController {
         
         let width = Int(imageView.bounds.width)
         let height = Int(imageView.bounds.height)
-        var renderer = Renderer(width: width, height: height, textures: Textures(loader: { (value) -> Bitmap in
-            return Bitmap(width: 6, height: 6, color: .green)
-        }))
+        var renderer = Renderer(width: width, height: height, textures: textures)
         renderer.draw(world)
         
         imageView.image = UIImage(bitmap: renderer.bitmap)

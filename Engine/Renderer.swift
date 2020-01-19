@@ -42,16 +42,20 @@ public extension Renderer {
             let perpendicular = wallDistance / distanceRatio
             let height = wallHeight * focalLength / perpendicular * bitmap.height.to_d
             
-            let wallColor: Color
+            let wallTexture: Bitmap
+            let wallX: Double
             if end.x.rounded(.down) == end.x {
-                wallColor = .white
+                wallTexture = textures[.wall]
+                wallX = end.y - end.y.rounded(.down)
             } else {
-                wallColor = .gray
+                wallTexture = textures[.wall2]
+                wallX = end.x - end.x.rounded(.down)
             }
             
-            bitmap.drawLine(from: Vector(x: x.to_d, y: (bitmap.height.to_d - height) / 2),
-                            to: Vector(x: x.to_d, y: (bitmap.height.to_d + height) / 2),
-                            color: wallColor)
+            let textureX = Int(wallX * Double(wallTexture.width))
+            let wallStart = Vector(x: Double(x), y: (Double(bitmap.height) - height) / 2 + 0.001)
+            bitmap.drawColumn(textureX, of: wallTexture, at: wallStart, forHeight: height)
+            
             
             columnPosition += step
         }
